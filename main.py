@@ -53,8 +53,8 @@ class Linkedlist:
             curr_node = curr_node.next
         return " -> ".join(elements) + " -> None"
 
-    def __getitem__(self, index) -> Any:
-        if index < 0:
+    def __getitem__(self, index) -> Node:
+        if index < 0 or self.head is None:
             raise IndexError("Index out of range")
         curr_node = self.head
         for j in range(index):
