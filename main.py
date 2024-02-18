@@ -16,6 +16,8 @@ class Linkedlist:
         self.head = None
 
     def append(self, value) -> None:
+        if type(value) == Node:
+            raise TypeError("Appending Node type not allowed")
         new_node = Node(value)
         if self.head is None:
             self.head = new_node
@@ -47,6 +49,8 @@ class Linkedlist:
         return None
 
     def insert(self, index: int, value: Any) -> None:
+        if type(value) == Node:
+            raise TypeError("Inserting Node type not allowed")
         if index < 0:
             raise IndexError("Index out of range")
         curr_node = self.head
