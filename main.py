@@ -7,8 +7,8 @@ class Node:
         self.value = value
         self.next = None
 
-    def __str__(self):
-        return self.value
+    def __str__(self) -> str:
+        return str(self.value)
 
 
 class Linkedlist:
@@ -71,6 +71,11 @@ class Linkedlist:
             self.head = next_node
             next_node = next_node.next
         self.head = None
+        return None
+
+    def extend(self, values) -> None:
+        for i in values:
+            self.append(i)
         return None
 
     def __str__(self) -> str:
