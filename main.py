@@ -12,8 +12,9 @@ class Node:
 
 
 class Linkedlist:
-    def __init__(self):
+    def __init__(self, *args):
         self.head = None
+        [self.append(i) for i in args]
 
     def append(self, value) -> None:
         if type(value) == Node:
