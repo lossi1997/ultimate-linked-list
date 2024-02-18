@@ -60,13 +60,27 @@ class Linkedlist:
         curr_node.next = new_node
         return None
 
+    def clear(self) -> None:
+        next_node = self.head.next
+        while next_node is not None:
+            del self.head
+            self.head = next_node
+            next_node = next_node.next
+        self.head = None
+        return None
+
     def __str__(self) -> str:
-        elements = []
-        curr_node = self.head
-        while curr_node is not None:
-            elements.append(str(curr_node.value))
-            curr_node = curr_node.next
-        return " -> ".join(elements) + " -> None"
+        result: str
+        if self.head is None:
+            result = "None"
+        else:
+            elements = []
+            curr_node = self.head
+            while curr_node is not None:
+                elements.append(str(curr_node.value))
+                curr_node = curr_node.next
+            result = " -> ".join(elements) + " -> None"
+        return result
 
     def __getitem__(self, index: int) -> Node:
         if index < 0 or self.head is None:
