@@ -99,3 +99,11 @@ class Linkedlist:
             yield curr_node.value
             curr_node = curr_node.next
         return None
+
+    def __len__(self):
+        curr_node = self.head
+        count = 0
+        while curr_node is not None:
+            count += 1
+            curr_node = curr_node.next
+        return count
