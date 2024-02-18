@@ -15,8 +15,8 @@ class Linkedlist:
     def __init__(self):
         self.head = None
 
-    def append(self, data) -> None:
-        new_node = Node(data)
+    def append(self, value) -> None:
+        new_node = Node(value)
         if self.head is None:
             self.head = new_node
             return None
@@ -44,6 +44,21 @@ class Linkedlist:
             while curr_node.next.next is not None:
                 curr_node = curr_node.next
             curr_node.next = curr_node.next.next
+        return None
+
+    def insert(self, index: int, value: Any) -> None:
+        if index < 0:
+            raise IndexError("Index out of range")
+        curr_node = self.head
+        for j in range(index-1):
+            if curr_node.next is None and index > j:
+                raise IndexError("Index out of range")
+            else:
+                curr_node = curr_node.next
+        new_node = Node(value)
+        new_node.next = curr_node.next
+        curr_node.next = new_node
+        return None
 
     def __str__(self) -> str:
         elements = []
@@ -53,7 +68,7 @@ class Linkedlist:
             curr_node = curr_node.next
         return " -> ".join(elements) + " -> None"
 
-    def __getitem__(self, index) -> Node:
+    def __getitem__(self, index: int) -> Node:
         if index < 0 or self.head is None:
             raise IndexError("Index out of range")
         curr_node = self.head
