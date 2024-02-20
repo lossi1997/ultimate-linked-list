@@ -1,6 +1,8 @@
 
 from typing import Any
 
+import node
+
 
 class Node:
     def __init__(self, value: Any):
@@ -24,12 +26,16 @@ class Node:
         return self.value + self._get_value(other)
 
     def __sub__(self, other):
+        if other.__rsub__.__name__ == "__rsub__":
+            return self._get_value(other) - self.value
         return self.value - self._get_value(other)
 
     def __mul__(self, other):
         return self.value * self._get_value(other)
 
-    def __truediv__(self, other):  # FIXME incorrect result when dividing multiple values at once
+    def __truediv__(self, other):
+        if other.__rtruediv__.__name__ == "__rtruediv__":
+            return self._get_value(other) / self.value
         return self.value / self._get_value(other)
 
     __radd__ = __add__
