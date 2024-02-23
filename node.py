@@ -20,6 +20,7 @@ class Node:
     def __str__(self) -> str:
         return str(self.value)
 
+    # Math methods
     def __sub__(self, other) -> int | float:
         return self.value - self._get_value(other)
 
@@ -53,8 +54,28 @@ class Node:
     def __add__(self, other) -> int | float:
         return self.value + self._get_value(other)
 
+    __radd__ = __add__
+
     def __mul__(self, other) -> int | float:
         return self.value * self._get_value(other)
 
-    __radd__ = __add__
     __rmul__ = __mul__
+
+    # Comparison methods
+    def __eq__(self, other) -> bool:
+        return self.value == self._get_value(other)
+
+    def __ne__(self, other) -> bool:
+        return self.value != self._get_value(other)
+
+    def __lt__(self, other) -> bool:
+        return self.value < self._get_value(other)
+
+    def __le__(self, other) -> bool:
+        return self.value <= self._get_value(other)
+
+    def __gt__(self, other) -> bool:
+        return self.value > self._get_value(other)
+
+    def __ge__(self, other) -> bool:
+        return self.value >= self._get_value(other)
